@@ -22,7 +22,8 @@ services:
       - ./logs:/opt/printer_data/logs
 networks:
   Ender5Pro1:
-    driver: bridge
     external: true
+    driver: macvlan
     options:
-      parent: eno1:3
+      parent: eno1
+      vlanid: 300

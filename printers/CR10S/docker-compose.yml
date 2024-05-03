@@ -22,7 +22,8 @@ services:
       - ./logs:/opt/printer_data/logs
 networks:
   CR10S:
-    driver: bridge
     external: true
+    driver: macvlan
     options:
-      parent: eno1:2
+      parent: eno1
+      vlanid: 200
