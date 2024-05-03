@@ -1,0 +1,28 @@
+services:
+  klipper:
+    image: mkuf/klipper:latest
+    privileged: true
+    container_name: klipper_Ender5Pro1
+    volumes:
+      - /dev:/dev
+      - ./printer.cfg:/opt/printer_data/config/printer.cfg
+      - ./run:/opt/printer_data/run
+      - ./gcode:/opt/printer_data/gcodes
+      - ./logs:/opt/printer_data/logs
+
+  moonraker:
+    image: mkuf/moonraker:latest
+    container_name: moonraker_Ender5Pro1
+    ports:
+      - "7125:7125"
+    volumes:
+      - ./moonraker.conf:/opt/printer_data/config/moonraker.conf
+      - ./run:/opt/printer_data/run
+      - ./gcode:/opt/printer_data/gcodes
+      - ./logs:/opt/printer_data/logs
+networks:
+  Ender5Pro1:
+    driver: bridge
+    external: true
+    options:
+      parent: eno1:3

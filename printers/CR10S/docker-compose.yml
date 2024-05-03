@@ -1,0 +1,28 @@
+services:
+  klipper:
+    image: mkuf/klipper:latest
+    container_name: klipper_CR10S
+    privileged: true
+    volumes:
+      - /dev:/dev
+      - ./printer.cfg:/opt/printer_data/config/printer.cfg
+      - ./run:/opt/printer_data/run
+      - ./gcode:/opt/printer_data/gcodes
+      - ./logs:/opt/printer_data/logs
+
+  moonraker:
+    image: mkuf/moonraker:latest
+    container_name: moonraker_CR10S
+    ports:
+      - "7125:7125"
+    volumes:
+      - ./moonraker.conf:/opt/printer_data/config/moonraker.conf
+      - ./run:/opt/printer_data/run
+      - ./gcode:/opt/printer_data/gcodes
+      - ./logs:/opt/printer_data/logs
+networks:
+  CR10S:
+    driver: bridge
+    external: true
+    options:
+      parent: eno1:2
