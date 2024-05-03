@@ -20,10 +20,6 @@ services:
       - ./run:/opt/printer_data/run
       - ./gcode:/opt/printer_data/gcodes
       - ./logs:/opt/printer_data/logs
-networks:
-  CR10S:
-    external: true
-    driver: macvlan
-    options:
-      parent: eno1
-      vlanid: 200
+    networks:
+      3dp_outerNetwork:
+        ipv4_address: 10.244.104.53
