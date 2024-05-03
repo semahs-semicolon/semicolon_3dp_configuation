@@ -1,0 +1,5 @@
+outerNetwork:
+  subnet: 10.244.104.0/24
+  ipRange: 10.244.104.0/24
+  gateway: 10.244.104.1
+  parent: eno1
