@@ -11,12 +11,12 @@ docker network create -d macvlan \
   -o parent=$config_outerNetwork_parent \
   3dp_outerNetwork
 
-for dir in ./../printers/*; do
+for dir in ../printers/*; do
   echo "Stopping Klipper and Moonraker for $dir"
   docker-compose -f $dir/docker-compose.yml down 
 done
 
-for dir in ./../printers/*; do
+for dir in ../printers/*; do
   echo "Starting Klipper and Moonraker for $dir"
   docker-compose -f $dir/docker-compose.yml up -d
 done
