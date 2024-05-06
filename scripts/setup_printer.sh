@@ -2,7 +2,7 @@
 
 source ./scripts/parse_yaml.sh
 
-eval $(parse_yaml ../config.yml "config_")
+eval $(parse_yaml ../config.yaml "config_")
 
 docker network create -d macvlan \
   --subnet=$config_outerNetwork_subnet \
@@ -11,12 +11,13 @@ docker network create -d macvlan \
   -o parent=$config_outerNetwork_parent \
   3dp_outerNetwork
 
-for file in ../printers/*; do
-  echo "Stopping Loaded Klipper and Moonraker for $file"
-  docker-compose -f $file/docker-compose.yml down -d
+for dir in ./../printers/*; do
+  echo "Stopping Klipper and Moonraker for $file"
+  docker-compose -f $file/docker-compose.yml down 
 done
 
-for file in ../printers/*; do
+for dir in ./../printers/*; do
   echo "Starting Klipper and Moonraker for $file"
   docker-compose -f $file/docker-compose.yml up -d
 done
+
