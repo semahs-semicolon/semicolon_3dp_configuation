@@ -29,3 +29,10 @@ networks:
   network1:
     name: 3dp_outerNetwork
     external: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.244.104.0/24
+          ip_range: 10.244.104.0/24
+          gateway: 10.244.104.1
+          
