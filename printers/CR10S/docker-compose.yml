@@ -22,5 +22,9 @@ services:
       - ./gcode:/opt/printer_data/gcodes
       - ./logs:/opt/printer_data/logs
     networks:
-      3dp_outerNetwork:
+      outerNetwork:
         ipv4_address: 10.244.104.53
+
+networks:
+  outerNetwork:
+    name: 3dp_outerNetwork
