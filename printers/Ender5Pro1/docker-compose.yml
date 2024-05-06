@@ -27,6 +27,7 @@ services:
 
 networks:
   outerNetwork:
-    name: 3dp_outerNetwork
+    external:
+      name: 3dp_outerNetwork
 
 
