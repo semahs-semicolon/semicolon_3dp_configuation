@@ -22,17 +22,5 @@ services:
       - ./gcode:/opt/printer_data/gcodes
       - ./logs:/opt/printer_data/logs
     networks:
-      network1:
-        ipv4_address: 10.244.104.53
-
-networks:
-  network1:
-    name: 3dp_outerNetwork
-    external: true
-    ipam:
-      driver: macvlan
-      config:
-        - subnet: 10.244.104.0/24
-          ip_range: 10.244.104.0/24
-          gateway: 10.244.104.1
+      - host
           
