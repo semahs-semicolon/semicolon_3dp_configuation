@@ -21,7 +21,5 @@ services:
       - ./run:/opt/printer_data/run
       - ./gcode:/opt/printer_data/gcodes
       - ./logs:/opt/printer_data/logs
-    networks:
-      - host
         
 
