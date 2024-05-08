@@ -15,7 +15,7 @@ services:
     image: mkuf/moonraker:latest
     container_name: moonraker_CR10S
     ports:
-      - "7125:7125"
+      - "7125:7126"
     volumes:
       - ./moonraker.conf:/opt/printer_data/config/moonraker.conf
       - ./run:/opt/printer_data/run
