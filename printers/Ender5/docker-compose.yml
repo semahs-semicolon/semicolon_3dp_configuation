@@ -15,7 +15,7 @@ services:
     image: mkuf/moonraker:latest
     container_name: moonraker_Ender5
     ports:
-      - "7125:7127"
+      - "7127:7125"
     volumes:
       - ./moonraker.conf:/opt/printer_data/config/moonraker.conf
       - ./run:/opt/printer_data/run
