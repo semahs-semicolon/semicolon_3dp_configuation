@@ -1,0 +1,14 @@
+network:
+  ethernets:
+    eno1:
+      addresses:
+        - 10.244.104.51/24
+      nameservers:
+        addresses:
+          - 10.244.104.50
+          - 8.8.8.8
+        search: []
+      routes:
+      - to: default
+        via: 10.244.104.1
+version: 2
