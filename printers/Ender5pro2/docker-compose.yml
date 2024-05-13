@@ -3,6 +3,7 @@ services:
   klipper:
     image: mkuf/klipper:latest
     privileged: true
+    user: "farmer"
     container_name: klipper_Ender5Pro2
     volumes:
       - /dev:/dev
@@ -16,6 +17,7 @@ services:
     container_name: moonraker_Ender5Pro2
     ports:
       - "7129:7125"
+    user: "farmer"
     volumes:
       - ./moonraker.conf:/opt/printer_data/config/moonraker.conf
       - ./run:/opt/printer_data/run
