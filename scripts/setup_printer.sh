@@ -3,12 +3,15 @@
 source ./parse_yaml.sh
 
 eval $(parse_yaml ../config.yaml "config_")
-for dir in ../printers/*; do
-  echo "Stopping Klipper and Moonraker Service for $dir"
-  systemctl stop klipper-$dir.service
-  systemctl stop moonraker-$dir.service
-done
+shopt -s globstar  
+target_directory="../printers"
 
+for directory in "$target_directory"/**/*/; do
+    dir=$(basename "$directory")
+    echo "Stopping Klipper and Moonraker Service for $dir"
+    systemctl stop klipper-$dir.service
+    systemctl stop moonraker-$dir.service
+done
 for dir in ../printers/*; do
   echo "Stopping Klipper and Moonraker for $dir"
   docker-compose -f $dir/docker-compose.yml down 
