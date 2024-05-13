@@ -6,7 +6,7 @@ eval $(parse_yaml ../config.yaml "config_")
 shopt -s globstar  
 target_directory="../printers"
 
-for directory in "$target_directory"/**/*/; do
+for directory in "$target_directory"/*; do
     dir=$(basename "$directory")
     echo "Stopping Klipper and Moonraker Service for $dir"
     systemctl stop klipper-$dir.service
